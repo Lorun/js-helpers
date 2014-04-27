@@ -1,0 +1,26 @@
+<!doctype html>
+<!--[if lte IE 8]><html class="lteie8"><![endif]-->
+<!--[if gt IE 8]><!--><html><!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<title>JS Helpers</title>
+	<!-- <link rel="stylesheet" media="all" href="/css/style.css" > -->
+	<script src="js.js"></script>
+</head>
+<body>
+
+<div class="layout">
+	<a href="#" id="a_element">Element</a>
+</div>
+<!-- .layout -->
+
+<script>
+
+window.onload = function(e) {
+	js.on(js.$('#a_element'), 'click', function () {
+		js.remove(this);
+	});
+};
+</script>
+</body>
+</html>
