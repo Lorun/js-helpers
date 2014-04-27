@@ -42,3 +42,18 @@ js.loadScript('new_script.js', function () {
 	// Действия после подключения и загрузки js файла
 });
 ```
+
+##Работа с Cookie
+###Установка куки
+```
+var date = new Date( new Date().getTime() + 60*1000 );
+cookie.set('name', 'value', { expires: date.toUTCString(), path: '/' });
+```
+###Получение куки с именем name
+```
+cookie.get('name');
+```
+###Удаление куки с именем name
+```
+cookie.delete('name');
+```

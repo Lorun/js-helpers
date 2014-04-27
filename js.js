@@ -168,59 +168,6 @@ var animate = function (elem, duration, opts) {
 	}, delay);
 };
 
-
-
-
-
-
-
-
-
-var popup = (function () {
-	var popups = [];
-
-	return {
-		open: function (className, html, o) {
-			var o = o || {},
-				className = className || 'popup',
-				$popup		= $$('div', className),
-				$overlay 	= $('.overlay').length > 0 ? $('.overlay') : $$('div', 'overlay'),
-				trans 		= o.trans || 1;
-			
-			$popup.innerHTML = html || '';
-			$overlay.style.opacity = trans;
-
-			document.body.appendChild($overlay);
-			document.body.appendChild($popup);
-
-			popups.push(className);
-		},
-		close: function (className) {
-			var classes = [];
-			
-			classes = (typeof className == 'string') ? classes.push(className) : popups;
-
-			if (typeof className == 'string') {
-				remove($('.'+className)[0]);
-				var _popups = [];
-				popups.forEach(function (cl, i) {
-					if (cl != className) _popups.push(cl);
-				});
-				popups = _popups;
-			} else {
-				popups.forEach(function (cl, i) {
-					remove($('.'+cl)[0]);
-				});
-				remove($('.overlay')[0]);
-				popups = [];
-			}
-		},
-		get: function () {
-			return popups;
-		}
-	};
-}());
-
 /**
  * Working with Cookies
  * @return {object}
@@ -272,3 +219,52 @@ var cookie = function() {
 		delete: deleteCookie
 	};
 };
+
+/**
+ * Popups
+ * @return {}
+ */
+var popup = (function () {
+	var popups = [];
+
+	return {
+		open: function (className, html, o) {
+			var o = o || {},
+				className = className || 'popup',
+				$popup		= $$('div', className),
+				$overlay 	= $('.overlay').length > 0 ? $('.overlay') : $$('div', 'overlay'),
+				trans 		= o.trans || 1;
+			
+			$popup.innerHTML = html || '';
+			$overlay.style.opacity = trans;
+
+			document.body.appendChild($overlay);
+			document.body.appendChild($popup);
+
+			popups.push(className);
+		},
+		close: function (className) {
+			var classes = [];
+			
+			classes = (typeof className == 'string') ? classes.push(className) : popups;
+
+			if (typeof className == 'string') {
+				remove($('.'+className)[0]);
+				var _popups = [];
+				popups.forEach(function (cl, i) {
+					if (cl != className) _popups.push(cl);
+				});
+				popups = _popups;
+			} else {
+				popups.forEach(function (cl, i) {
+					remove($('.'+cl)[0]);
+				});
+				remove($('.overlay')[0]);
+				popups = [];
+			}
+		},
+		get: function () {
+			return popups;
+		}
+	};
+}());
