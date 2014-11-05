@@ -27,3 +27,9 @@ $.preloadImages('image_1.jpg', 'image_2.jpg', function() {
   // Callback
   console.log('Изображения загружены');
 });
+
+// Или так
+$.preloadImages(['image_1.jpg', 'image_2.jpg'], function() {
+  // Callback
+  console.log('Изображения загружены');
+});
